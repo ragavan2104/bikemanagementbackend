@@ -31,6 +31,21 @@ app.get('/health', (_req, res) => {
   res.json({ status: 'OK', message: 'Server is running' });
 });
 
+// Root route
+app.get('/', (_req, res) => {
+  res.json({ 
+    status: 'OK', 
+    message: 'Bike Management API',
+    endpoints: {
+      health: '/health',
+      bikes: '/api/bikes',
+      sales: '/api/sales',
+      analytics: '/api/analytics',
+      users: '/api/users'
+    }
+  });
+});
+
 // API Routes
 app.use('/api/bikes', bikeRoutes);
 app.use('/api/sales', saleRoutes);
