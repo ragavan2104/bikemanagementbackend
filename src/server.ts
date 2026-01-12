@@ -17,28 +17,15 @@ const app: Express = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(helmet());
+// Disable helmet for now to fix CORS issues
+// app.use(helmet());
 
-// CORS configuration
-const allowedOrigins = [
-  'https://bikemanagmentfront.vercel.app',
-  'http://localhost:5173',
-  'http://localhost:3000'
-];
-
+// CORS configuration - allow all origins for Vercel deployments
 app.use(cors({
-  origin: function(origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(null, true); // Allow all origins in production for now
-    }
-  },
+  origin: true, // Allow all origins
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin']
 }));
 
 // Handle preflight requests
