@@ -1,6 +1,5 @@
 import express, { Express } from 'express';
 import cors from 'cors';
-import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import bikeRoutes from './routes/bikeRoutes.js';
