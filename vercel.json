@@ -14,11 +14,11 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/api"
+      "destination": "/src/index"
     }
   ],
   "functions": {
-    "api/index.ts": {
+    "src/index.ts": {
       "maxDuration": 30
     }
   }
