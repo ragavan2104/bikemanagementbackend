@@ -1,25 +1,11 @@
 {
   "version": 2,
-  "name": "bike-management-server",
-  "builds": [
+  "rewrites": [
     {
-      "src": "src/server.ts",
-      "use": "@vercel/node"
+      "source": "/(.*)",
+      "destination": "/src/server.ts"
     }
   ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/src/server.ts"
-    }
-  ],
-  "env": {
-    "NODE_ENV": "production",
-    "PORT": "3000",
-    "FIREBASE_PROJECT_ID": "@firebase_project_id",
-    "FIREBASE_PRIVATE_KEY": "@firebase_private_key",
-    "FIREBASE_CLIENT_EMAIL": "@firebase_client_email"
-  },
   "functions": {
     "src/server.ts": {
       "maxDuration": 30
